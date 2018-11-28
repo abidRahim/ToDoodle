@@ -166,7 +166,7 @@ function selectAllList(e) {
 
   stateDisplay();
 
-
+  toggleSelect.classList.toggle("selectedAll");
 
 //   toggleSelect.addEventListener("click", ()=>{
 
@@ -186,9 +186,12 @@ add.addEventListener("click", deleteTodo);    // Deletes the list on clicking th
 toggleSelect.addEventListener("click", selectAllList);
 
 
+all.addEventListener("click", () => {
+  state = 0; stateDisplay();
+});
 active.addEventListener("click", () => {
   state = 1; stateDisplay();
-})
+});
 complete.addEventListener("click", () => {
   state = 2; stateDisplay();
-})
+});
