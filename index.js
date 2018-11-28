@@ -166,12 +166,13 @@ function selectAllList(e) {
 
   stateDisplay();
 
-  toggleSelect.classList.toggle("selectedAll");
+  toggleSelect.classList.add("selectedAll");
 
-//   toggleSelect.addEventListener("click", ()=>{
-
-//   displayTodo(arr);  
-// });
+  arr.forEach(v => {
+    if(v.checked == false) {
+      toggleSelect.classList.remove("selectedAll");
+    }
+  });
 
 }
 
