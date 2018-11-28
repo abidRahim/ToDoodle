@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/stylesheet/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lemon" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <!-- Todo container -->
+      <div class="todo-wrapper">
+        <h1>ToDoodle</h1>
+
+
+        <div class="todo-container">
+          <!-- User text input box -->
+          <div class="todo-list" >
+            <span class="fas fa-sort-down fa-3x selectAll"></span>
+            <input type="text" id="user-input" placeholder="What needs to be done?">
+          </div>
+
+          <!-- populating user input lists inside 'ul' tag -->
+          <ul id="addList">
+
+          </ul>
+
+          <div class="foot">
+            <p class="left"></p>
+            <div class="buttons">
+              <button class="all" onclick="allTasks()">All</button> <!-- Displays All lists-->
+              <button class="active" >Active</button> <!-- Displays unchecked lists-->
+              <button class="completed">Completed</button> <!-- Displays checked lists-->
+            </div>
+            <button class="completed clear" onclick="clearCompleted()">Clear completed</button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>

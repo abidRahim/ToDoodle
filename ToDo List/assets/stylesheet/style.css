@@ -1,0 +1,270 @@
+/* CSS Reset  */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+  background-color: #f5f5f5;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+:root {
+  font-size: 14px;
+}
+
+/* Typography */
+
+h1 {
+  display: inline-block;
+  margin-bottom: 35px ;
+  display: flex;
+  justify-content: center;
+  font-size: 4em;
+  color: rgb(90, 90, 90);
+  font-family: 'Lemon', cursive;
+}
+
+.todo-wrapper {
+  margin: 100px auto;
+  width: 600px;
+}
+
+.todo-container {
+  background-color: #ffffff;
+  box-shadow:0 1px 6px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; 
+}
+
+#user-input {
+  width: auto;
+  font-size: 1.9em;  
+  border: none;
+  color: #4d4d4d;
+  justify-content: flex-start;
+}
+
+input::placeholder {
+  font-style: italic;
+  color: #e0e0e0;
+  letter-spacing: 1.2;
+}
+
+.todo-list {
+  background: transparent;
+  padding: 10px 20px 20px;
+  box-shadow: 0px -2px 10px 0 #dbdbdb inset;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+ul {
+  list-style-type: none;
+}
+
+label {
+  color: #4d4d4d;
+  font-size: 1.7em;
+  letter-spacing: 1.3;
+  margin-left: 15px;
+  flex: 13;
+}
+
+.label {
+  text-decoration: line-through;
+  color: #c0c0c0;
+}
+
+.list-node {
+  border-bottom: 0.5px solid #e2e2e2;
+  padding: 15px 20px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.delete {
+  visibility: hidden;
+}
+
+.list-node:hover .delete {
+  flex: 1;
+  color: #00c0f075;
+  visibility: visible;
+}
+
+.list-node:hover .delete:hover {
+  color: #00BFF0;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+input[type=checkbox] {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  visibility: hidden;
+}
+
+input[type=checkbox]:after {
+  content: " ";
+  background-color: #fff;
+  display: inline-block;
+  margin-left: 10px;
+  padding-bottom: 5px;
+  color: #00BFF0;
+  width: 22px;
+  height: 25px;
+  visibility: visible;
+  border: 1px solid #00BFF0;
+  padding-left: 3px;
+  border-radius: 5px;
+}
+
+input[type=checkbox]:checked:after {
+  content: "\2714";
+  padding: -5px;
+  font-weight: bold;
+}
+
+/* CheckBox styling */
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+input[type=checkbox] {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  visibility: hidden;
+}
+
+input[type=checkbox]:after {
+  content: " ";
+  background-color: #fff;
+  display: inline-block;
+  margin-left: 2px;
+  padding-bottom: 5px;
+  color: #00BFF0;
+  width: 22px;
+  height: 25px;
+  visibility: visible;
+  border: 1px solid #00BFF0;
+  padding-left: 3px;
+  border-radius: 5px;
+}
+
+input[type=checkbox]:checked:after {
+  content: "\2714";
+  padding: -5px;
+  font-weight: bold;
+  transition: all ease-in-out 1s;
+}
+
+.foot {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 180px 1fr;
+  width: 100%;  
+}
+
+.buttons {
+  display: grid;
+  justify-content: start;
+  grid-auto-flow: column;
+}
+
+.all, .active, .completed {
+  margin: 8px; 
+  border: none;
+  background: transparent;
+  color: rgb(100, 100, 100);
+  padding: 2px 7px;
+  font-size: 1em;
+}
+
+.selected {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.left {
+  margin: 8px;
+  color: rgb(100, 100, 100);
+  padding: 2px 7px;
+  font-size: 0.9em;
+  align-self: center;
+}
+
+.selectAll {
+  color: #e0e0e0;
+  margin-left: 5px;
+  margin-right: 20px;
+}
+
+.selectedAll {
+  color: #4d4d4d;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
