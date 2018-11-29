@@ -38,7 +38,7 @@ function displayTodo(thisArr) {
   });
 
   lefting();
-  }
+}
   
   
 // Event listener function to select the respective id and toggle the checked property
@@ -51,6 +51,7 @@ function handleList(e) {
   // console.log(completedArr);
 
   toggleTodo(id);
+  removeSelectedAll();
   stateDisplay();
 }	
 
@@ -168,12 +169,16 @@ function selectAllList(e) {
 
   toggleSelect.classList.add("selectedAll");
 
+  removeSelectedAll();
+}
+
+// Removes 'selectedAll' class
+function removeSelectedAll() {
   arr.forEach(v => {
     if(v.checked == false) {
       toggleSelect.classList.remove("selectedAll");
     }
   });
-
 }
 
 toggleSelect.addEventListener("click", selectAllList);
@@ -188,11 +193,14 @@ toggleSelect.addEventListener("click", selectAllList);
 
 
 all.addEventListener("click", () => {
-  state = 0; stateDisplay();
+  state = 0; 
+  stateDisplay();
 });
 active.addEventListener("click", () => {
-  state = 1; stateDisplay();
+  state = 1; 
+  stateDisplay();
 });
 complete.addEventListener("click", () => {
-  state = 2; stateDisplay();
+  state = 2; 
+  stateDisplay();
 });
