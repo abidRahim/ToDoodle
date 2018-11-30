@@ -1,4 +1,4 @@
-var arr = [];
+var arr = JSON.parse(localStorage.getItem('arr')) || [];
 var completedArr = [];
 var state = 0;
 
@@ -10,9 +10,19 @@ var all = document.querySelector(".all")            // Selects All Button
 var active = document.querySelector(".active")      // Selects Active button
 var complete = document.querySelector(".completed") // Selects Completed button
 var left = document.querySelector(".left");         // Para tag to display left items
-var toggleSelect = document.querySelector(".selectAll");
+var toggleSelect = document.querySelector(".selectAll"); 
 var foot = document.querySelector(".foot");
 
+
+function stateDisplay() {
+  if(state == 0) {    
+    allTasks();
+  } else if (state == 1) {
+    remaining();
+  } else if (state == 2) {
+    completed();
+  }
+}
 
 // Adding a user input value
 function addTodo(e) {
@@ -22,6 +32,8 @@ function addTodo(e) {
     var randomId = Date.now();
                                           
     arr.push( { todo: input.value, checked: false, id: randomId } );
+
+    localStorage.setItem('arr', JSON.stringify(arr));
 
     input.value = "";
     stateDisplay();
@@ -55,17 +67,6 @@ function handleList(e) {
   stateDisplay();
 }	
 
-function stateDisplay() {
-  if(state == 0) {
-    displayTodo(arr);
-  } else if (state == 1) {
-    remaining();
-  } else if (state == 2) {
-    completed();
-  }
-}
- 
-
 // Checking the checked property of the ToDo.
 function toggleTodo(id) {
   arr.forEach(elem => {
@@ -96,7 +97,7 @@ function removeTodoArr (del_id) {
 
 // Displays completed or checked lists
 function completed() {
-  var completedTask = arr.filter( elem => elem.checked == true);
+  let completedTask = arr.filter( elem => elem.checked == true);
   
   all.classList.remove("selected");
   active.classList.remove("selected");
@@ -108,7 +109,7 @@ function completed() {
 
 // Displays remaining or pending tasks lists
 function remaining() {
-  var remainingTask = arr.filter( elem => elem.checked == false);
+  let remainingTask = arr.filter( elem => elem.checked == false);
 
   all.classList.remove("selected");
   complete.classList.remove("selected");
@@ -118,7 +119,6 @@ function remaining() {
 }
 
 // Displays all Todo lists
-
 function allTasks() {
 
   active.classList.remove("selected");
@@ -185,22 +185,29 @@ toggleSelect.addEventListener("click", selectAllList);
 
 
 // Event Listeners
-input.addEventListener("keydown", addTodo);   // When "Enter" key is pressed, it adds the list to the array.
+
 input.addEventListener("keydown", addTodo);   // When "Enter" key is pressed, it adds the list to the array.
 add.addEventListener("click", handleList);    // Marks the list.
 add.addEventListener("click", deleteTodo);    // Deletes the list on clicking the close icon.
 toggleSelect.addEventListener("click", selectAllList);
 
 
+// Event Listener for State "All"
 all.addEventListener("click", () => {
   state = 0; 
   stateDisplay();
 });
+
+// Event Listener for State "Active"
 active.addEventListener("click", () => {
   state = 1; 
   stateDisplay();
 });
+
+// Event Listener for State "Completed"
 complete.addEventListener("click", () => {
   state = 2; 
   stateDisplay();
 });
+
+stateDisplay();
