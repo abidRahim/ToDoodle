@@ -2,7 +2,6 @@ var arr = JSON.parse(localStorage.getItem('arr')) || [];
 var completedArr = [];
 var state = 0;
 
-
 var add = document.getElementById("addList");       // Selects the 'ul' element to populate lists
 var input = document.getElementById("user-input");  // selects input element where the user enters text
 
@@ -49,6 +48,8 @@ function displayTodo(thisArr) {
     `<li class="list-node"><input data-id="${elem.id}" type="checkbox" ${elem.checked ? "checked" : ""}><label class= "${elem.checked ? "label" : ""}" data-id="${elem.id}">${elem.todo}</label><span data-id="${elem.id}" class="delete fas fa-times fa-2x"></span></li>`;
   });
 
+  localStorage['arr'] = JSON.stringify(arr);
+
   lefting();
 }
   
@@ -93,6 +94,9 @@ function removeTodoArr (del_id) {
 
   completedArr = completedArr.filter( (elem) => elem.id != del_id);
   displayTodo(arr);
+
+localStorage['arr'] = JSON.stringify(arr);
+
 }
 
 // Displays completed or checked lists
@@ -148,6 +152,11 @@ function clearCompleted() {
     allTasks();
 
   });
+
+localStorage['arr'] = JSON.stringify(arr);
+
+
+  toggleSelect.classList.remove("selectedAll");
 }
 
 
@@ -179,6 +188,7 @@ function removeSelectedAll() {
       toggleSelect.classList.remove("selectedAll");
     }
   });
+
 }
 
 toggleSelect.addEventListener("click", selectAllList);
